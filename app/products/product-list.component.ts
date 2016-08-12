@@ -3,12 +3,19 @@
  */
 import {Component} from "angular2/src/core/metadata";
 import {IProduct} from "./Product";
+import {OnInit} from "angular2/src/core/linker/interfaces";
+import {ProductFilterPipe} from "./product-filter.pipe";
 @Component({
     selector: 'pm-products',
-    templateUrl: 'app/products/product-list.component.html'
+    templateUrl: 'app/products/product-list.component.html',
+    styleUrls: ['app/products/product-list.component.css'],
+    pipes: [ProductFilterPipe]
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+    ngOnInit(): any {
+        console.log("We initialised the Product List");
+    }
     pageTitle: string = "Product List";
     imageWidth: number = 50;
     imageMargin: number = 2;
