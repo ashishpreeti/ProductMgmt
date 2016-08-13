@@ -1,6 +1,6 @@
 // Created by ashishpatil on 12/08/2016.
 import {PipeTransform} from "angular2/src/core/change_detection/pipe_transform";
-import {IProduct} from "./Product";
+import {IProduct} from "./product";
 import {Pipe} from "angular2/src/core/metadata";
 
 @Pipe({

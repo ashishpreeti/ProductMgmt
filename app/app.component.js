@@ -1,4 +1,4 @@
-System.register(["angular2/src/core/metadata", "./products/product-list.component"], function(exports_1, context_1) {
+System.register(["angular2/src/core/metadata", "./products/product-list.component", "./products/product.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/src/core/metadata", "./products/product-list.componen
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var metadata_1, product_list_component_1;
+    var metadata_1, product_list_component_1, product_service_1;
     var AppComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(["angular2/src/core/metadata", "./products/product-list.componen
             },
             function (product_list_component_1_1) {
                 product_list_component_1 = product_list_component_1_1;
+            },
+            function (product_service_1_1) {
+                product_service_1 = product_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -29,7 +32,8 @@ System.register(["angular2/src/core/metadata", "./products/product-list.componen
                     metadata_1.Component({
                         selector: 'pm-app',
                         template: "<div><h1>{{pageTitle}}</h1></div>\n                <pm-products></pm-products>",
-                        directives: [product_list_component_1.ProductListComponent]
+                        directives: [product_list_component_1.ProductListComponent],
+                        providers: [product_service_1.ProductService] //register provider at app level so it can be injected anywhere
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
