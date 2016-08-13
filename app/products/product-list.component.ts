@@ -5,11 +5,13 @@ import {Component} from "angular2/src/core/metadata";
 import {IProduct} from "./Product";
 import {OnInit} from "angular2/src/core/linker/interfaces";
 import {ProductFilterPipe} from "./product-filter.pipe";
+import {AutoGrowDirective} from "../utils/auto-grow.directive";
 @Component({
     selector: 'pm-products',
     templateUrl: 'app/products/product-list.component.html',
     styleUrls: ['app/products/product-list.component.css'],
-    pipes: [ProductFilterPipe]
+    pipes: [ProductFilterPipe],
+    directives: [AutoGrowDirective]
 })
 
 export class ProductListComponent implements OnInit {
