@@ -13,10 +13,10 @@ export class ProductService {
     getProducts() : Observable<IProduct[]> {
         return this._http.get(this._productUrl)
             .map((response:Response) => <IProduct[]>response.json())
-            .catch(this.handleError);
+            .catch(ProductService.handleError);
     }
 
-    private handleError(error: Response) {
+    private static handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server Error')
     }
