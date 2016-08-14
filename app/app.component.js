@@ -1,4 +1,4 @@
-System.register(["angular2/src/core/metadata", "./products/product-list.component", "./products/product.service", "angular2/http", 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(["angular2/src/core/metadata", "./products/product-list.component", "./products/product.service", "angular2/http", 'rxjs/Rx', "angular2/src/router/router_providers", "./products/product-detail.component", "angular2/src/router/route_config/route_config_decorator", "angular2/router", "./home/welcome.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/src/core/metadata", "./products/product-list.componen
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var metadata_1, product_list_component_1, product_service_1, http_1;
+    var metadata_1, product_list_component_1, product_service_1, http_1, router_providers_1, product_detail_component_1, route_config_decorator_1, router_1, welcome_component_1;
     var AppComponent;
     return {
         setters:[
@@ -26,7 +26,22 @@ System.register(["angular2/src/core/metadata", "./products/product-list.componen
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (router_providers_1_1) {
+                router_providers_1 = router_providers_1_1;
+            },
+            function (product_detail_component_1_1) {
+                product_detail_component_1 = product_detail_component_1_1;
+            },
+            function (route_config_decorator_1_1) {
+                route_config_decorator_1 = route_config_decorator_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (welcome_component_1_1) {
+                welcome_component_1 = welcome_component_1_1;
+            }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
@@ -35,13 +50,19 @@ System.register(["angular2/src/core/metadata", "./products/product-list.componen
                 AppComponent = __decorate([
                     metadata_1.Component({
                         selector: 'pm-app',
-                        template: "<div><h1>{{pageTitle}}</h1></div>\n                <pm-products></pm-products>",
-                        directives: [product_list_component_1.ProductListComponent],
+                        template: "\n        <div>\n            <nav class=\"nav navbar-default\">\n                <div class=\"container-fluid\">\n                    <a class=\"navbar-brand\">{{pageTitle}}</a>\n                    <ul class=\"nav navbar-nav\">\n                        <li><a [routerLink]=\"['Welcome']\">Home</a></li>\n                        <li><a [routerLink]=\"['Products']\">Product List</a></li>\n                    </ul>\n                </div>\n            </nav>      \n            <div class=\"container\">\n                <router-outlet></router-outlet>\n            </div>\n        </div>\n",
+                        directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             product_service_1.ProductService,
-                            http_1.HTTP_PROVIDERS
+                            http_1.HTTP_PROVIDERS,
+                            router_providers_1.ROUTER_PROVIDERS
                         ]
-                    }), 
+                    }),
+                    route_config_decorator_1.RouteConfig([
+                        { path: '/welcome', name: 'Welcome', component: welcome_component_1.WelcomeComponent, useAsDefault: true },
+                        { path: '/product', name: 'Products', component: product_list_component_1.ProductListComponent },
+                        { path: '/product/:id', name: 'ProductDetail', component: product_detail_component_1.ProductDetailComponent },
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
